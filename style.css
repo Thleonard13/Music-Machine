@@ -1,6 +1,7 @@
-/* Images created by: https://unsplash.com/@pawel_czerwinski */
-
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap');
+@font-face {
+  font-family: Cooper-Black;
+  src: url(fonts/Cooper\ Black\ Regular.ttf);
+}
 
 html {
   box-sizing: border-box;
@@ -9,21 +10,132 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: #810b00;
+  background-image: url(img/background.png);
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'League Spartan', sans-serif;
+  font-family: 'Cooper-Black', cursive;
   font-size: 12px;
 }
+/* Top Banner */
+.banner {
+  position: absolute;
+  width: 50%;
+  min-width: 500px;
+  height: 90px;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  background-color: #080808;
+  color: white;
+  border: 5px solid white;
+  border-width: 0 5px 5px 5px;
+  border-radius: 0 0 25px 25px;
+  z-index: 20;
+  animation: banner-slide 2s 1000ms both;
+}
+
+#rug-title {
+  font-size: 5rem;
+  padding: px;
+}
+
+.banner h2 {
+  color: #ffce78;
+  font-size: 2rem;
+  padding: 10px;
+  width: 150px;
+  text-align: left;
+  
+}
+
+@keyframes banner-slide {
+  to {
+    transform: translateY(0);
+  }
+  from {
+    transform: translateY(-100px);
+  }
+}
+
+/* Side Bar Designs */
+.bar-container{
+  width: 10%;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+}
+
+.left-bars{
+  left: 0;
+}
+
+.right-bars {
+  right: 0;
+  animation: slide-in-right 2s ease-in 1s;
+}
+
+.left-bars > * {
+  box-shadow: 5px 0 10px black;
+  animation: slide-in-left 2s ease-in 1s both;
+}
+
+.right-bars > * {
+  box-shadow: -5px 0 10px black;
+  animation: slide-in-right 2s ease-in 1s both;
+}
+
+.bar {
+  width: 50px;
+  height: 100%;
+}
+
+.bar-3 {
+  background-color: rgb(241, 225, 0);
+  z-index: 10;
+}
+
+.bar-2 {
+  background-color: rgb(185, 102, 0);
+  z-index: 9;
+}
+
+.bar-1 {
+  background-color: rgb(94, 56, 24);
+}
+
+@keyframes slide-in-right {
+  to {transform: translateX(0);}
+  from {transform: translateX(100px);}
+}
+
+@keyframes slide-in-left {
+  to {transform: translateX(0);}
+  from {transform: translateX(-100px);}
+}
+
+/* Music Player Elements */
 .player-container {
   height: 500px;
   width: 400px;
   background-color: #e6ebef;
   border-radius: 20px;
-  box-shadow: 0 15px 30px 5px #0006
+  box-shadow: 0 15px 30px 5px #0006;
+  /* animation: fade-in 1s ease-in both; */
+  /* z-index: 10; */
 }
+
+/* @keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+  from {
+    opacity: 0;
+  }
+}  */
 
 .img-container {
   height: 300px;
@@ -54,7 +166,8 @@ h3 {
   margin: 5px 0 0;
 }
 
-/* Progress */
+/* Progress Bar */
+
 .progress-container {
   background: #fff;
   border-radius: 5px;
@@ -62,22 +175,21 @@ h3 {
   margin: 40px 20px;
   height: 10px;
   width: 90%;
+  font-family: sans-serif;
+  font-size: 1rem;
 }
-
-
 
 .progress {
   background: #080808;
   border-radius: 5px;
   height: 100%;
-  /* change this to show progress */
   width: 0;
   transition: width 0.1s linear;
 }
 
 .duration-wrapper {
   position: relative;
-  top: -25px;
+  top: -30px;
   display: flex;
   justify-content: space-between;
 }
@@ -106,6 +218,36 @@ h3 {
   font-size: 40px;
   position: relative;
   top: 3px;
+}
+
+.record {
+  text-align: center;
+}
+.record img{
+  position: relative;
+  top: -190px;
+  width: 380px;
+  z-index: -10;
+  /* animation: spin 3s infinite linear; */
+  animation: slide-down 2s linear 2s both;
+}
+
+@keyframes spin {
+  0% {transform: rotate(0);}
+  100% {transform: rotate(360deg);}
+}
+
+@keyframes slide-down {
+  from {transform: translateY(-200px);}
+  to {transform: translateY(0px);}
+}
+
+
+@media screen and (max-width: 1000px) {
+  .banner {
+    width: 50%;
+    min-width: none;
+  }
 }
 
 /* Media Query: iPhone (Vertical) */
