@@ -9,6 +9,7 @@ const durationEl = document.getElementById('duration');
 const prevBtn = document.getElementById('prev');
 const playBtn = document.getElementById('play');
 const nextBtn = document.getElementById('next');
+const record = document.querySelector('.recordImg');
 
 const songs = [
     {
@@ -41,6 +42,9 @@ function playSong() {
     playBtn.classList.replace('fa-play', 'fa-pause');
     playBtn.setAttribute('title', 'Pause')
     music.play();
+    record.style = "animation: spin 3s infinite linear;";
+    record.style.animationPlayState = 'running';
+
 }
 
 // Pause
@@ -49,6 +53,7 @@ function pauseSong() {
     playBtn.classList.replace('fa-pause', 'fa-play');
     playBtn.setAttribute('title', 'Play')
     music.pause();
+    record.style.animationPlayState = 'paused';
 }
 
 // Play or Pause Event Listener
@@ -91,7 +96,6 @@ loadSong(songs[songIndex]);
 // Update Progress Bar and Time
 function updateProgressBar(e) {
     if (isPlaying) {
-        console.log(e);
         // Update progress bar
         const {duration, currentTime} = e.srcElement;
         const progressPercent = (currentTime / duration) * 100;

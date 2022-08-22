@@ -3,26 +3,29 @@
   src: url(fonts/Cooper\ Black\ Regular.ttf);
 }
 
-html {
-  box-sizing: border-box;
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
+  box-sizing: border-box;
   background-image: url(img/background.png);
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Cooper-Black', cursive;
-  font-size: 12px;
+  font-size: 16px;
 }
 /* Top Banner */
 .banner {
   position: absolute;
-  width: 50%;
-  min-width: 500px;
+  width: 26rem;
   height: 90px;
   top: 0;
   display: flex;
@@ -40,7 +43,6 @@ body {
 
 #rug-title {
   font-size: 5rem;
-  padding: px;
 }
 
 .banner h2 {
@@ -64,28 +66,22 @@ body {
 /* Side Bar Designs */
 .bar-container{
   width: 10%;
-  height: 100vh;
+  height: 100%;
   position: fixed;
   display: flex;
+  max-width: 150px;
+  /* border: 5px solid pink; */
 }
 
 .left-bars{
   left: 0;
+  box-shadow: 5px 0 10px #000a;
+
 }
 
 .right-bars {
   right: 0;
-  animation: slide-in-right 2s ease-in 1s;
-}
-
-.left-bars > * {
-  box-shadow: 5px 0 10px black;
-  animation: slide-in-left 2s ease-in 1s both;
-}
-
-.right-bars > * {
-  box-shadow: -5px 0 10px black;
-  animation: slide-in-right 2s ease-in 1s both;
+  box-shadow: -5px 0 10px #000a;
 }
 
 .bar {
@@ -107,39 +103,18 @@ body {
   background-color: rgb(94, 56, 24);
 }
 
-@keyframes slide-in-right {
-  to {transform: translateX(0);}
-  from {transform: translateX(100px);}
-}
-
-@keyframes slide-in-left {
-  to {transform: translateX(0);}
-  from {transform: translateX(-100px);}
-}
-
 /* Music Player Elements */
 .player-container {
-  height: 500px;
-  width: 400px;
+  height: 32em;
+  width: 24em;
   background-color: #e6ebef;
   border-radius: 20px;
   box-shadow: 0 15px 30px 5px #0006;
-  /* animation: fade-in 1s ease-in both; */
-  /* z-index: 10; */
 }
 
-/* @keyframes fade-in {
-  to {
-    opacity: 1;
-  }
-  from {
-    opacity: 0;
-  }
-}  */
-
 .img-container {
-  height: 300px;
-  width: 300px;
+  height: 18em;
+  width: 18em;
   position: relative;
   top: -50px;
   left: 50px;
@@ -203,7 +178,7 @@ h3 {
 }
 
 .fas {
-  font-size: 30px;
+  font-size: 2rem;
   color: rgb(129, 129, 129);
   margin-right: 30px;
   cursor: pointer;
@@ -215,21 +190,32 @@ h3 {
 }
 
 .main-button {
-  font-size: 40px;
+  font-size: 2.2rem;
   position: relative;
   top: 3px;
 }
 
-.record {
-  text-align: center;
-}
-.record img{
+.needleImg {
+  height: 260px;
+  display: block;
+  z-index: -5;
   position: relative;
-  top: -190px;
-  width: 380px;
+  top: -380px;
+  left: 230px;
+  animation: slide-down ease-in 3s forwards;
+}
+
+.recordImg{
+  position: relative;
+  top: -120px;
+  left: 50px;
+  width: 18em;
   z-index: -10;
-  /* animation: spin 3s infinite linear; */
-  animation: slide-down 2s linear 2s both;
+  animation: slide-down ease-in 3s forwards;
+}
+
+.spinning {
+  animation: spin 3s infinite linear;
 }
 
 @keyframes spin {
@@ -243,33 +229,13 @@ h3 {
 }
 
 
-@media screen and (max-width: 1000px) {
-  .banner {
-    width: 50%;
-    min-width: none;
-  }
-}
-
 /* Media Query: iPhone (Vertical) */
-@media screen and (max-width: 376px) {
-  .player-container {
-    width: 95vw;
+@media screen and (max-width: 26rem) {
+  .player-container{
+    zoom: 0.7;
   }
 
-  .img-container {
-    left: 29px;
-  }
-
-  h2 {
-    font-size: 20px;
-  }
-
-  h3 {
-    font-size: 15px;
-  }
-
-  .player-controls {
-    top: -10px;
-    left: 100px;
+  .banner {
+    zoom: 0.5;
   }
 }
